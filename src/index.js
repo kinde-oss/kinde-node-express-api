@@ -1,22 +1,10 @@
-const authToken = require('./utils/authToken/authToken');
-const jwkToPem = require('jwk-to-pem');
-const axios = require('axios');
+const {authToken, getPem} = require('@kinde-oss/kinde-node-auth-utils');
 
-const kindeExpress = (domain) => {
-  let pem;
-  console.log(domain);
-  const keyUrl = `https://${domain}/.well-known/jwks.json`;
-  axios.get(keyUrl).then(({data}) => {
-    if (data && data.keys) {
-      const [firstKey] = data.keys;
-      pem = jwkToPem(firstKey);
-    } else {
-      console.error(`ERROR: Unable to get keys from ${keyUrl}`);
-    }
-  });
+const kindeExpress = async (domain) => {
+  const pem = await getPem(domain);
 
   return (req, res, next) => {
-    const authHeader = req.headers['authorization'];
+    const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];
 
     if (token == null) return res.sendStatus(401);
