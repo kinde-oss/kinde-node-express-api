@@ -1,4 +1,4 @@
-const {authToken, getPem} = require('@kinde-oss/kinde-node-auth-utils');
+const {authToken, getPem} = require('@kinde-oss/kinde-node-auth-utils').default;
 
 const kindeExpress = async (domain) => {
   const pem = await getPem(domain);
