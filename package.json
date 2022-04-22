@@ -1,6 +1,6 @@
 {
   "name": "@kinde-oss/kinde-express",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Kinde JWT verification for Node Express APIs",
   "author": {
     "name": "Kinde",
@@ -39,6 +39,6 @@
   ],
   "private": false,
   "dependencies": {
-    "@kinde-oss/kinde-node-auth-utils": "^0.0.2"
+    "@kinde-oss/kinde-node-auth-utils": "^0.0.3"
   }
 }
