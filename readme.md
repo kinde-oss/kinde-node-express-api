@@ -1,4 +1,4 @@
-# @kinde-oss/kinde-express
+# @kinde-oss/kinde-node-express-api
 
 Kinde JWT verification for Node Express APIs.
 
@@ -7,13 +7,13 @@ Kinde JWT verification for Node Express APIs.
 Run the following command using npm:
 
 ```
-npm install @kinde-oss/kinde-express
+npm install @kinde-oss/kinde-node-express-api
 ```
 
 If you prefer Yarn, use this command instead:
 
 ```
-yarn add @kinde-oss/kinde-express
+yarn add @kinde-oss/kinde-node-express-api
 ```
 
 ## How to use

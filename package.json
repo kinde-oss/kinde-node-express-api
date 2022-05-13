@@ -1,5 +1,5 @@
 {
-  "name": "@kinde-oss/kinde-express",
+  "name": "@kinde-oss/kinde-node-express-api",
   "version": "0.0.4",
   "description": "Kinde JWT verification for Node Express APIs",
   "author": {
@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kinde-oss/kinde-express"
+    "url": "https://github.com/kinde-oss/kinde-node-express-api"
   },
-  "bugs": "https://github.com/kinde-oss/kinde-express",
+  "bugs": "https://github.com/kinde-oss/kinde-node-express-api",
   "homepage": "https://kinde.com",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
