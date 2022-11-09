@@ -1,33 +1,25 @@
-const {authToken, getPem} = require('@kinde-oss/kinde-node-auth-utils').default;
+import {JwtRsaVerifier} from 'aws-jwt-verify';
 
-const kindeExpress = (domain) => {
+const kindeExpress = (issuer, options) => {
+  const {audience} = options;
+  const verifier = JwtRsaVerifier.create({
+    issuer,
+    audience,
+    jwksUri: `${issuer}/.well-known/jwks.json`
+  });
+
   return async (req, res, next) => {
     try {
-      const pem = await getPem(domain);
-
       const authHeader = req.headers.authorization;
       const token = authHeader && authHeader.split(' ')[1];
-
-      if (token == null) {
-        console.log('no token found');
-        return res.sendStatus(401);
-      }
-
-      authToken(token, pem, (err, user) => {
-        if (err) {
-          console.log(err);
-          return res.sendStatus(403);
-        }
-        const userObj = JSON.parse(user);
-        if (userObj) {
-          console.log('User found');
-        }
-        req.user = {id: userObj.sub};
-
-        next();
-      });
+      const payload = await verifier.verify(token);
+      console.log('Token is valid');
+      req.user = {id: payload.sub};
+      next();
     } catch (err) {
+      console.log('Token not valid!');
       console.log(err);
+      return res.sendStatus(403);
     }
   };
 };
