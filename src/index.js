@@ -4,7 +4,7 @@ const kindeExpress = (issuer, options) => {
   const {audience} = options;
   const verifier = JwtRsaVerifier.create({
     issuer,
-    audience,
+    audience: audience || null,
     jwksUri: `${issuer}/.well-known/jwks.json`
   });
 
