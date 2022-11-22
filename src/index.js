@@ -1,6 +1,6 @@
 import {JwtRsaVerifier} from 'aws-jwt-verify';
 
-const kindeExpress = (issuer, options) => {
+const kindeExpress = (issuer, options = {}) => {
   const {audience} = options;
   const verifier = JwtRsaVerifier.create({
     issuer,
